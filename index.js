@@ -9,7 +9,7 @@ const TypeContenuRouter = require("./routes/typeContenuRouter");
 const RoleRouter = require("./routes/Role");
 const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
-const Role = db.role;
+const Role = models.role;
 
 
 app.use(cors());

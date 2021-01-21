@@ -1,13 +1,14 @@
 const db = require("../models");
-const config = require("../config/auth.config");
 const User = db.user;
 
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const  secret= "bezkoder-secret-key"
 
 
 exports.signup = (req, res) => {
+
 
   // Save User to Database
   User.create({
@@ -49,7 +50,7 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ id: user.id }, config.secret, {
+      var token = jwt.sign({ id: user.id }, secret, {
         expiresIn: 86400 // 24 hours
       });
 
