@@ -1,0 +1,17 @@
+{
+  "development": {
+    "username": "eok01x61rpb38fbi",
+    "password": "ded02n6bt7egx8el",
+    "database": "yffjglsto1rnlqee",
+    "host": "z5zm8hebixwywy9d.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  
+  },
+  "production": {
+    "username": "eok01x61rpb38fbi",
+    "password": "ded02n6bt7egx8el",
+    "database": "yffjglsto1rnlqee",
+    "host": "z5zm8hebixwywy9d.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
