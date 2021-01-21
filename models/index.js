@@ -21,7 +21,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model;
   });
 
@@ -33,5 +33,48 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+
+
+
+db.user = require("../models/user.model.js")(sequelize, Sequelize);
+db.role = require("./role.model.js")(sequelize, Sequelize);
+db.Contenu = require ('../models/Contenu')(sequelize, Sequelize);
+db.Visioconference = require('../models/Visioconference')(sequelize, Sequelize);
+db.Type = require('../models/Type')(sequelize, Sequelize);
+db.Matiere = require('../models/Matiere')(sequelize, Sequelize);
+db.Niveau = require('../models/Niveau')(sequelize, Sequelize);
+
+// associations
+
+db.role.hasMany(db.user)
+db.user.belongsTo(db.role)
+
+db.user.belongsToMany(db.Visioconference, {
+  through: "user_visioconferences",
+  foreignKey: "userId",
+  otherKey: "visioId"
+});
+db.Visioconference.belongsToMany(db.user, {
+  through: "user_visioconferences",
+  foreignKey: "visioId",
+  otherKey: "userId"
+});
+db.user.belongsToMany(db.Contenu, {
+  through: "user_contenu",
+  foreignKey: "userId",
+  otherKey: "contenuId"
+});
+db.Contenu.belongsToMany(db.user, {
+  through: "user_contenu",
+  foreignKey: "contenuId",
+  otherKey: "userId"
+});
+db.Niveau.hasMany(db.Visioconference)
+db.Matiere.hasMany(db.Visioconference)
+db.Visioconference.belongsTo(db.Matiere)
+db.Visioconference.belongsTo(db.Niveau)
+
+db.ROLES = ["user", "admin", "moderator"];
 
 module.exports = db;
