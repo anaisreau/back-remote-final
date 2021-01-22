@@ -11,10 +11,17 @@ const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
 const Role = models.role;
 
-const corsOptions = {
-  origin: 'https://remote-inc-api.herokuapp.com/',
-}
+
 app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+
+  res.setHeader('Access-Control-Allow-Origin', 'https://remote-inc-api.herokuapp.com/api/user/1');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  next();
+});
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
