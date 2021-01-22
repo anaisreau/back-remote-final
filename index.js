@@ -12,7 +12,7 @@ const VisioRouter = require("./routes/visioConferences.router");
 const Role = models.role;
 
 var corsOptions = {
-  origin: "https://dazzling-bohr-7dd504.netlify.app/"
+  origin: "https://dazzling-bohr-7dd504.netlify.app"
 };
 
 app.use(cors(corsOptions));
