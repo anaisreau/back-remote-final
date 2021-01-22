@@ -11,18 +11,12 @@ const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
 const Role = models.role;
 
-// var corsOptions = {
-//   origin: 'https://dazzling-bohr-7dd504.netlify.app/',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+var corsOptions = {
+  origin: "https://remote-inc-api.herokuapp.com"
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
@@ -58,11 +52,15 @@ function initial() {
 
 }
 // set port, listen for requests
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
   models
-  .sequelize
-  .sync({force : true})
-  .then(() => app.listen(port, () => console.log(`App listening on port ${port}`)))
+  .sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+  });
 
-
+  
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
