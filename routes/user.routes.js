@@ -35,12 +35,12 @@ module.exports = function(app) {
 
 
 //users
-  app.get("/api/user/all",  controller.allUsers);
+  app.get("/api/user/all", [authJwt.verifyToken],  controller.allUsers);
 
-  app.get("/api/user/:id",  controller.iduser);
+  app.get("/api/user/:id", [authJwt.verifyToken],  controller.iduser);
 
-  app.put("/api/user/put/:id",  controller.modifyUser);
+  app.put("/api/user/put/:id", [authJwt.verifyToken],  controller.modifyUser);
 
-  app.delete("/api/user/delete/:id",  controller.deleteUser);
+  app.delete("/api/user/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
 
 };
