@@ -11,8 +11,10 @@ const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
 const Role = models.role;
 
-
-app.use(cors());
+const corsOptions = {
+  origin: 'https://remote-inc-api.herokuapp.com/',
+}
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
