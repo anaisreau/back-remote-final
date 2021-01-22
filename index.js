@@ -11,17 +11,13 @@ const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
 const Role = models.role;
 
+var corsOptions = {
+  origin: 'https://dazzling-bohr-7dd504.netlify.app/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use(cors(corsOptions));
-app.use(function (req, res, next) {
 
-  res.setHeader('Access-Control-Allow-Origin', 'https://remote-inc-api.herokuapp.com');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  next();
-});
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -29,7 +25,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// simple route
+// simple rout
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Anais Reau Application" });
 });
