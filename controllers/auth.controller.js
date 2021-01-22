@@ -4,7 +4,7 @@ const User = db.user;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-const  secret= "bezkoder-secret-key"
+const  secret= "anaisnananasecretkey"
 
 
 exports.signup = (req, res) => {
