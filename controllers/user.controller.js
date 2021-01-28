@@ -39,8 +39,8 @@ exports.allAccess = (req, res) => {
 
 exports.iduser = (req, res)=> {
   user
-  .findAll({
-    where: { user_id : req.params.user_id },
+  .findOne({
+    where: { user_id : req.params.id },
    
   })
   .then(x => res.json(x))
