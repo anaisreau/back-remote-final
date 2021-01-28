@@ -13,7 +13,21 @@ const Auth = require("./routes/auth.routes");
 const User = require("./routes/user.routes");
 const Role = models.role;
 
-app.use(cors());
+
+var corsOptions = {
+  origin: "https://dazzling-bohr-7dd504.netlify.app"
+};
+
+app.use(cors(corsOptions));
+
+app.use(function(req, res, next) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  );
+  next();
+});
+
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
