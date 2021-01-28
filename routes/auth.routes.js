@@ -10,5 +10,5 @@ const Auth = express.Router();
   //signin 
   Auth.post("/signin", controller.signin);
 
-
+module.exports = Auth
 

@@ -38,3 +38,4 @@ const User = express.Router();
 
 // };
 
+module.exports = User

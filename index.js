@@ -13,11 +13,7 @@ const Auth = require("./routes/auth.routes");
 const User = require("./routes/user.routes");
 const Role = models.role;
 
-
-
 app.use(cors());
-
-
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
