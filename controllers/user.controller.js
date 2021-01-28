@@ -48,7 +48,7 @@ exports.iduser = (req, res)=> {
 
 exports.modifyUser = (req, res)=> {
 
-  const apiId = req.params.user_id;
+  const apiId = req.params.id;
 
   const {firstname, lastname, email, password, phone, description, roleId, avatar} = req.body;
 
@@ -81,7 +81,7 @@ exports.deleteUser = (req, res)=> {
     user
   .destroy({
     where : {
-     user_id: req.params.user_id
+     user_id: req.params.id
     }
   }).then(function(){
     res.send('User supprimé avec succès')
