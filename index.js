@@ -30,8 +30,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Anais Reau Application" });
 });
 
-app.use('./routes/auth.routes', Auth)
-app.use('./routes/user.routes', User)
+app.use('./api/auth', Auth)
+app.use('./api/user', User)
 app.use('/api/contenus', ContenuRouter)
 app.use('/api/matieres', MatiereRouter)
 app.use('/api/types', TypeContenuRouter)
