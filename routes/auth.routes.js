@@ -1,5 +1,7 @@
 const { verifySignUp } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
+const express = require('express');
+const Auth = express.Router();
 
 
 
@@ -13,11 +15,11 @@ const controller = require("../controllers/auth.controller");
 //     next();
 //   });
   // signup
-  app.post("/api/auth/signup", [verifySignUp.checkDuplicateUsernameOrEmail],  controller.signup );
+  Auth.post("/api/auth/signup", [verifySignUp.checkDuplicateUsernameOrEmail],  controller.signup );
 
   //signin 
-  app.post("/api/auth/signin", controller.signin);
+  Auth.post("/api/auth/signin", controller.signin);
 
 // };
 
-module.exports = app
+module.exports = Auth

@@ -1,6 +1,7 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
-
+const express = require('express');
+const User = express.Router();
 
 // module.exports = function(app) {
 //   app.use(function(req, res, next) {
@@ -11,30 +12,30 @@ const controller = require("../controllers/user.controller");
 //     next();
 //   });
 // favorites 
-  app.post("/api/user/favorites/add", controller.addFavorite);
+  User.post("/api/user/favorites/add", controller.addFavorite);
 
-  app.delete("/api/user/favorites/delete", [authJwt.verifyToken], controller.deleteFavoris);
+  User.delete("/api/user/favorites/delete", [authJwt.verifyToken], controller.deleteFavoris);
 
-  app.get("/api/user/favorites/all", [authJwt.verifyToken], controller.getFavoris);
+  User.get("/api/user/favorites/all", [authJwt.verifyToken], controller.getFavoris);
 
 
   //visios 
-  app.post("/api/user/visio/add", [authJwt.verifyToken], controller.addVisio);
+  User.post("/api/user/visio/add", [authJwt.verifyToken], controller.addVisio);
 
-  app.delete("/api/user/visio/delete", [authJwt.verifyToken], controller.deleteVisio);
+  User.delete("/api/user/visio/delete", [authJwt.verifyToken], controller.deleteVisio);
   
-  app.get("/api/user/visio/all", [authJwt.verifyToken], controller.getVisios);
+  User.get("/api/user/visio/all", [authJwt.verifyToken], controller.getVisios);
 
 
 //users
-  app.get("/api/user/all",  [authJwt.verifyToken], controller.allUsers);
+  User.get("/api/user/all",  [authJwt.verifyToken], controller.allUsers);
 
-  app.get("/api/user/:id", [authJwt.verifyToken],  controller.iduser);
+  User.get("/api/user/:id", [authJwt.verifyToken],  controller.iduser);
 
-  app.put("/api/user/put/:id",  [authJwt.verifyToken], controller.modifyUser);
+  User.put("/api/user/put/:id",  [authJwt.verifyToken], controller.modifyUser);
 
-  app.delete("/api/user/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
+  User.delete("/api/user/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
 
 // };
 
-module.exports = app
+module.exports = User

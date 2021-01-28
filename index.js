@@ -9,6 +9,8 @@ const TypeContenuRouter = require("./routes/typeContenuRouter");
 const RoleRouter = require("./routes/Role");
 const NiveauRouter = require("./routes/niveauContenuRouter");
 const VisioRouter = require("./routes/visioConferences.router");
+const Auth = require("./routes/auth.routes");
+const User = require("./routes/user.routes");
 const Role = models.role;
 
 
@@ -28,9 +30,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Anais Reau Application" });
 });
 
-require('./routes/auth.routes')(app);
-require('./routes/user.routes')(app);
-
+app.use('./routes/auth.routes', Auth)
+app.use('./routes/user.routes', User)
 app.use('/api/contenus', ContenuRouter)
 app.use('/api/matieres', MatiereRouter)
 app.use('/api/types', TypeContenuRouter)
