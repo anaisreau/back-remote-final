@@ -30,8 +30,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Anais Reau Application" });
 });
 
-app.use('./api/auth', Auth)
-app.use('./api/user', User)
+app.use('/api/auth', Auth)
+app.use('/api/user', User)
 app.use('/api/contenus', ContenuRouter)
 app.use('/api/matieres', MatiereRouter)
 app.use('/api/types', TypeContenuRouter)
@@ -56,7 +56,7 @@ function initial() {
 const PORT = process.env.PORT || 8080;
 
   models
-  .sequelize.sync({}).then(() => {
+  .sequelize.sync().then(() => {
     console.log('Drop and Resync Db');
     initial();
   });
