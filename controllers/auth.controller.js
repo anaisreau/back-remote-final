@@ -51,12 +51,12 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ user_id: user.id }, secret, {
+      var token = jwt.sign({ id : user_id }, secret, {
         expiresIn: 86400 // 24 hours
       });
 
         res.status(200).send({
-          id: user.id,
+          id: user_id,
           firstname: user.firstname,
           email: user.email,
           accessToken: token,
