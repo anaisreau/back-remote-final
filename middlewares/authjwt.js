@@ -18,7 +18,7 @@ verifyToken = (req, res, next) => {
         message: "Mot de passe invalide"
       });
     }
-    req.user_id = decoded.id;
+    req.id = decoded.id;
     next();
   });
 };
