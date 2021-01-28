@@ -3,14 +3,14 @@ const controller = require("../controllers/user.controller");
 const express = require('express');
 const User = express.Router();
 
-module.exports = function(app) {
-  User.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    next();
-  });
+// module.exports = function(app) {
+//   User.use(function(req, res, next) {
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "x-access-token, Origin, Content-Type, Accept"
+//     );
+//     next();
+//   });
 // favorites 
   User.post("/favorites/add", controller.addFavorite);
 
@@ -36,5 +36,5 @@ module.exports = function(app) {
 
   User.delete("/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
 
-};
+// };
 
