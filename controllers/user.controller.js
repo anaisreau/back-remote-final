@@ -40,7 +40,7 @@ exports.allAccess = (req, res) => {
 exports.iduser = (req, res)=> {
   user
   .findAll({
-    where: { id : req.params.id },
+    where: { user_id : req.params.user_id },
    
   })
   .then(x => res.json(x))
@@ -48,7 +48,7 @@ exports.iduser = (req, res)=> {
 
 exports.modifyUser = (req, res)=> {
 
-  const apiId = req.params.id;
+  const apiId = req.params.user_id;
 
   const {firstname, lastname, email, password, phone, description, roleId, avatar} = req.body;
 
@@ -63,7 +63,7 @@ exports.modifyUser = (req, res)=> {
    roleId : roleId
 },{
       where: {
-          id : apiId
+          user_id : apiId
       }
   })
   .then(res.status(201).json({
@@ -81,7 +81,7 @@ exports.deleteUser = (req, res)=> {
     user
   .destroy({
     where : {
-     id: req.params.id
+     user_id: req.params.user_id
     }
   }).then(function(){
     res.send('User supprimé avec succès')

@@ -2,7 +2,7 @@
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = db.user;
-const  secret= "bezkoder-secret-key"
+const  secret= "anaisnananasecretkey"
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -18,7 +18,7 @@ verifyToken = (req, res, next) => {
         message: "Mot de passe invalide"
       });
     }
-    req.userId = decoded.id;
+    req.user_id = decoded.id;
     next();
   });
 };
