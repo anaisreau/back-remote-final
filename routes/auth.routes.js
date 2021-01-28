@@ -15,10 +15,10 @@ const Auth = express.Router();
 //     next();
 //   });
   // signup
-  Auth.post("/api/auth/signup", [verifySignUp.checkDuplicateUsernameOrEmail],  controller.signup );
+  Auth.post("/signup", [verifySignUp.checkDuplicateUsernameOrEmail],  controller.signup );
 
   //signin 
-  Auth.post("/api/auth/signin", controller.signin);
+  Auth.post("/signin", controller.signin);
 
 // };
 

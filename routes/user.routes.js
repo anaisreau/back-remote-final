@@ -12,29 +12,29 @@ const User = express.Router();
 //     next();
 //   });
 // favorites 
-  User.post("/api/user/favorites/add", controller.addFavorite);
+  User.post("/favorites/add", controller.addFavorite);
 
-  User.delete("/api/user/favorites/delete", [authJwt.verifyToken], controller.deleteFavoris);
+  User.delete("/favorites/delete", [authJwt.verifyToken], controller.deleteFavoris);
 
-  User.get("/api/user/favorites/all", [authJwt.verifyToken], controller.getFavoris);
+  User.get("/favorites/all", [authJwt.verifyToken], controller.getFavoris);
 
 
   //visios 
-  User.post("/api/user/visio/add", [authJwt.verifyToken], controller.addVisio);
+  User.post("/visio/add", [authJwt.verifyToken], controller.addVisio);
 
-  User.delete("/api/user/visio/delete", [authJwt.verifyToken], controller.deleteVisio);
+  User.delete("/visio/delete", [authJwt.verifyToken], controller.deleteVisio);
   
-  User.get("/api/user/visio/all", [authJwt.verifyToken], controller.getVisios);
+  User.get("/visio/all", [authJwt.verifyToken], controller.getVisios);
 
 
 //users
-  User.get("/api/user/all",  [authJwt.verifyToken], controller.allUsers);
+  User.get("/all",  [authJwt.verifyToken], controller.allUsers);
 
-  User.get("/api/user/:id", [authJwt.verifyToken],  controller.iduser);
+  User.get("/:id", [authJwt.verifyToken],  controller.iduser);
 
-  User.put("/api/user/put/:id",  [authJwt.verifyToken], controller.modifyUser);
+  User.put("/put/:id",  [authJwt.verifyToken], controller.modifyUser);
 
-  User.delete("/api/user/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
+  User.delete("/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
 
 // };
 
