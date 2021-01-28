@@ -3,39 +3,40 @@ const controller = require("../controllers/user.controller");
 const express = require('express');
 const User = express.Router();
 
-// module.exports = function(app) {
-//   User.use(function(req, res, next) {
-//     res.header(
-//       "Access-Control-Allow-Headers",
-//       "x-access-token, Origin, Content-Type, Accept"
-//     );
-//     next();
-//   });
+
+  User.use(function(req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
+
 // favorites 
   User.post("/favorites/add", controller.addFavorite);
 
-  User.delete("/favorites/delete", [authJwt.verifyToken], controller.deleteFavoris);
+  User.delete("/favorites/delete", controller.deleteFavoris);
 
-  User.get("/favorites/all", [authJwt.verifyToken], controller.getFavoris);
+  User.get("/favorites/all", controller.getFavoris);
 
 
   //visios 
-  User.post("/visio/add", [authJwt.verifyToken], controller.addVisio);
+  User.post("/visio/add", controller.addVisio);
 
-  User.delete("/visio/delete", [authJwt.verifyToken], controller.deleteVisio);
+  User.delete("/visio/delete", controller.deleteVisio);
   
-  User.get("/visio/all", [authJwt.verifyToken], controller.getVisios);
+  User.get("/visio/all", controller.getVisios);
 
 
 //users
-  User.get("/all",  [authJwt.verifyToken], controller.allUsers);
+  User.get("/all", controller.allUsers);
 
-  User.get("/:id", [authJwt.verifyToken],  controller.iduser);
+  User.get("/:id",  controller.iduser);
 
-  User.put("/put/:id",  [authJwt.verifyToken], controller.modifyUser);
+  User.put("/put/:id", controller.modifyUser);
 
-  User.delete("/delete/:id", [authJwt.verifyToken],  controller.deleteUser);
+  User.delete("/delete/:id",  controller.deleteUser);
 
-// };
+
 
 module.exports = User
