@@ -11,6 +11,8 @@ const user = db.user
 const favorite = db.FavoriteContenu
 const visio= db.user_visio
 const contenu=db.Contenu
+var bcrypt = require("bcryptjs");
+
 
 exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");
@@ -57,7 +59,7 @@ exports.modifyUser = (req, res)=> {
    firstname : firstname,
    lastname :  lastname,
    email :  email,
-   password : password,
+   password : bcrypt.hashSync(password, 8),
    phone : phone,
    description : description,
    roleId : roleId
