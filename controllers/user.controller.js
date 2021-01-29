@@ -57,7 +57,7 @@ exports.modifyUser = (req, res)=> {
    firstname : firstname,
    lastname :  lastname,
    email :  email,
-   password : bcrypt.hashSync(req.body.password, 8),
+   password : password,
    phone : phone,
    description : description,
    roleId : roleId
