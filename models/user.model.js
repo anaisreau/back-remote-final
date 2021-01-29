@@ -1,4 +1,3 @@
-import bcrypt from 'bcryptjs'
 
 
 module.exports = (sequelize, DataTypes) => {
@@ -13,17 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
-      }
-    }, {
-      instanceMethods: {
-        generateHash: function (password) {
-          return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-        },
-        validPassword: function (password) {
-          return bcrypt.compareSync(password, this.password)
-        }},
+      
+    }, 
       lastname: {
         type: DataTypes.STRING
       },
