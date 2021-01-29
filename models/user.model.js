@@ -1,3 +1,6 @@
+import bcrypt from 'bcryptjs'
+
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("users", {
       user_id : {
@@ -10,8 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       password: {
-        type: DataTypes.STRING
-      },
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    }, {
+      instanceMethods: {
+        generateHash: function (password) {
+          return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+        },
+        validPassword: function (password) {
+          return bcrypt.compareSync(password, this.password)
+        }},
       lastname: {
         type: DataTypes.STRING
       },
