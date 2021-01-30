@@ -50,21 +50,16 @@ exports.iduser = (req, res)=> {
 
 exports.modifyUser = (req, res)=> {
 
-  const apiId = req.params.id;
-
-  const {firstname, lastname, email, password, phone, description, roleId, avatar} = req.body;
-
  user.update({
-   avatar : avatar,
-   firstname : firstname,
-   lastname :  lastname,
-   email :  email,
-   phone : phone,
-   description : description,
-   roleId : roleId
+   avatar : req.body.avatar,
+   firstname : req.body.firstname,
+   lastname :  req.body.lastname,
+   email :  req.body.email,
+   phone : req.body.phone,
+   description : req.body.description,
 },{
       where: {
-          user_id : apiId
+          user_id : req.params.id
       }
   })
   .then(res.status(201).json({
