@@ -12,7 +12,7 @@ exports.allContenu = (req, res) => {
 exports.idContenu = (req, res)=> {
     Contenu
     .findAll({
-      where: { id : req.params.id },
+      where: { contenu_id : req.params.id },
      
     })
     .then(x => res.json(x))
@@ -50,7 +50,7 @@ exports.modifyContenu = (req, res)=> {
    type : type
 },{
       where: {
-          id : apiId
+          contenu_id : apiId
       }
   })
   .then(res.status(201).json({
@@ -68,7 +68,7 @@ exports.deleteContenu = (req, res)=> {
     Contenu
   .destroy({
     where : {
-     id: req.params.id
+     contenu_id: req.params.id
     }
   }).then(function(){
     res.send('Contenu supprimé avec succès')

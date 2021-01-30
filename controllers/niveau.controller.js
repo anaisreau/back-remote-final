@@ -12,7 +12,7 @@ exports.allNiveau = (req, res) => {
 exports.idNiveau = (req, res) => {
     Niveau
         .findAll({
-            where: { id: req.params.id },
+            where: { niveau_id: req.params.id },
         })
         .then(x => res.json(x))
 }
@@ -44,7 +44,7 @@ exports.putNiveau = (req, res) => {
             Niveau
                 .destroy({
                     where: {
-                        id: req.params.id
+                        niveau_id: req.params.id
                     }
                 }).then(function () {
                     res.send('Niveau supprimé avec succès')

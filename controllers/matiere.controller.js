@@ -12,7 +12,7 @@ exports.allMatiere = (req, res) => {
 exports.idMatiere = (req, res) => {
         Matiere
         .findAll({
-            where: { id: req.params.id },
+            where: { matiere_id: req.params.id },
         })
         .then(x => res.json(x))
 }
@@ -46,7 +46,7 @@ exports.deleteMatiere =(req, res)=>{
     Matiere
     .destroy({
       where : {
-        id : req.params.id
+        matiere_id : req.params.id
       }
     }).then(function(){
       res.send('Matière supprimée avec succès')

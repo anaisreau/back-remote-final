@@ -13,7 +13,7 @@ exports.allRoles = (req, res)=> {
 exports.idRole = (req, res)=> {
     Role
     .findAll({
-      where: { id : req.params.id },
+      where: { role_id : req.params.id },
     })
     .then(x => res.json(x))
 }
@@ -47,7 +47,7 @@ exports.deleteRole = (req, res)=> {
     Role
   .destroy({
     where : {
-      id : req.params.id
+      role_id : req.params.id
     }
   }).then(function(){
     res.send('Type de User supprimé avec succès')

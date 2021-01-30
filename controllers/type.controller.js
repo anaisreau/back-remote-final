@@ -12,7 +12,7 @@ exports.allType = (req, res) => {
 exports.idType = (req, res) => {
     Type
     .findAll({
-        where: { id : req.params.id },
+        where: { type_id : req.params.id },
       })
       .then(x => res.json(x))
 }
@@ -46,7 +46,7 @@ exports.deleteType= (req, res) => {
     Type
   .destroy({
     where : {
-      id : req.params.id
+      type_id : req.params.id
     }
   }).then(function(){
     res.send('Type de Contenu supprimé avec succès')
