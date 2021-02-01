@@ -4,7 +4,7 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-    const Favorite = sequelize.define('Favorites', {
+    const Favorite = sequelize.define('Favorite', {
         favoritecontenu_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
