@@ -1,9 +1,8 @@
 const { role } = require('../models')
 const db = require ('../models')
-const UserVisio = require('../models/UserVisio')
 const user = db.user
 const Favorites = db.Favorite
-const visio= db.uservisio
+const UserVisio= db.Uservisio
 
 
 exports.allAccess = (req, res) => {
@@ -86,10 +85,10 @@ exports.deleteUser = (req, res)=> {
       .create({
         user_id : req.body.user_id,
         contenu_id: req.body.contenu_id,
-        contenu_name : req.body.name,
-        contenu_photo : req.body.photo,
-        contenu_description: req.body.description,
-        contenu_lien: req.body.lien
+        contenu_name : req.body.contenu_name,
+        contenu_photo : req.body.contenu_photo,
+        contenu_description: req.body.contenu_description,
+        contenu_lien: req.body.contenu_lien
       })
       .catch(error => console.log(error))
       .then(res.status(200).send(`Le contenu a bien été ajouté aux favoris ! `))
