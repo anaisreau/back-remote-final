@@ -102,8 +102,8 @@ exports.deleteUser = (req, res)=> {
 
     Favorites
       .create({
-        userid : user_id,
-        contenuid: contenu_id,
+        user_id : user_id,
+        contenu_id: contenu_id,
         contenu_name : contenu_name,
         contenu_photo : contenu_photo,
         contenu_description: contenu_description,
