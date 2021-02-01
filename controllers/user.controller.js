@@ -99,7 +99,8 @@ exports.deleteUser = (req, res)=> {
 
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
-       user_id = utils.getUserId
+      let id = req.headers["x-access-token"];
+       user_id = utils.getUserId(id)
       Favorites
         .destroy({
           where: {
