@@ -100,7 +100,7 @@ exports.deleteUser = (req, res)=> {
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
      
-      let user_id = utils.getUserId;
+      let user_id = utils.verifyToken;
     
       Favorites
         .destroy({
