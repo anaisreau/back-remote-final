@@ -4,7 +4,7 @@ const db = require ('../models')
 const user = db.user
 const Favorites = db.Favorite
 const UserVisio= db.Uservisio
-
+const utils = require('../middlewares/authjwt')
 
 exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");
@@ -99,7 +99,7 @@ exports.deleteUser = (req, res)=> {
 
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
-       user_id = authJwt.verifyToken
+       user_id = utils.getUserId
       Favorites
         .destroy({
           where: {
