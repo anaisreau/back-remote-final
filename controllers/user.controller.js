@@ -8,7 +8,7 @@
 const { role } = require('../models')
 const db = require ('../models')
 const user = db.user
-const favorite = db.FavoriteContenu
+const favorite = db.favorite_contenu
 const visio= db.user_visio
 const contenu=db.Contenu
 var bcrypt = require("bcryptjs");
