@@ -15,7 +15,7 @@ User.use(function(req, res, next) {
 // favorites 
   User.post("/favorites/add",controller.addFavorite);
 
-  User.delete("/favorites/delete/:id", controller.deleteFavoris);
+  User.delete("/favorites/delete/:contenu_id/user/:user_id", controller.deleteFavoris);
 
   User.get("/favorites/all", controller.getFavoris);
 
