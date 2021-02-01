@@ -113,9 +113,7 @@ exports.deleteUser = (req, res)=> {
 // display all favoris 
           exports.getFavoris = (req, res) => {
             Favorites
-            .findAll({
-              where: { user_id : req.body.user_id}
-            })
+            .findAll()
             .then(item => {
               if (item) {
                 res.json(item) } 
