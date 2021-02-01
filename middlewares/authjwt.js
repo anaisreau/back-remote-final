@@ -25,16 +25,12 @@ verifyToken = (req, res, next) => {
 
 
 getUserId = (req) => {
-  let token = req.headers["x-access-token"];
-  if(token != null) {
-    try {
-      let jwtToken = jwt.verify(token, secret);
-      if(jwtToken != null)
-        user_ID = jwtToken.user_ID;} 
-        catch(err) { }
-      }
-      return user_ID;
-    }
+
+var token = req.headers["x-access-token"];
+var decoded = jwt_decode(token);
+ 
+return decoded.id ;
+}
   
 
 
