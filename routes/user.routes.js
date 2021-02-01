@@ -15,7 +15,7 @@ User.use(function(req, res, next) {
 // favorites 
   User.post("/favorites/add",controller.addFavorite);
 
-  User.delete("/favorites/delete", controller.deleteFavoris);
+  User.delete("/favorites/delete/:id", controller.deleteFavoris);
 
   User.get("/favorites/all", controller.getFavoris);
 
@@ -23,7 +23,7 @@ User.use(function(req, res, next) {
   //visios 
   User.post("/visio/add",controller.addVisio);
 
-  User.delete("/visio/delete",controller.deleteVisio);
+  User.delete("/visio/delete/:id",controller.deleteVisio);
   
   User.get("/visio/all",controller.getVisios);
 
