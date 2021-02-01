@@ -66,7 +66,7 @@ function initial() {
 const PORT = process.env.PORT || 8080;
 
   models
-  .sequelize.sync().then(() => {
+  .sequelize.sync({force : true}).then(() => {
     console.log('Drop and Resync Db');
     initial();
   });
