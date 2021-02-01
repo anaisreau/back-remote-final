@@ -11,13 +11,33 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true, 
             allowNull: false, 
             },
-        visioid : {
-            type: DataTypes.INTEGER,
-        },
-
-        userid : {
-            type: DataTypes.INTEGER,
-        },
+            name : {
+                type: DataTypes.STRING,
+                validate : {
+                    max : 80
+                },
+            },
+            description : {
+                type: DataTypes.STRING,
+                validate : {
+                    max : 255
+                }
+            },
+            lien : {
+                type: DataTypes.STRING,
+                validate : {
+                    max : 255
+                }
+            },
+            date : {
+                type : DataTypes.DATE
+            },
+            photo : {
+                type : DataTypes.BLOB("long")
+            } ,
+            room : {
+                type : DataTypes.STRING
+            } 
      },
      {
         timestamps: false,

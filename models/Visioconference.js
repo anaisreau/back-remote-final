@@ -33,7 +33,10 @@ module.exports = (sequelize, DataTypes) => {
             type : DataTypes.DATE
         },
         photo : {
-            type : DataTypes.BLOB("long")
+            type : DataTypes.STRING
+        } ,
+        room : {
+            type : DataTypes.STRING
         } 
     },
         {

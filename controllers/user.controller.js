@@ -114,7 +114,7 @@ exports.deleteUser = (req, res)=> {
           exports.getFavoris = (req, res) => {
             Favorites
             .findAll({
-              where: { userid : req.body.user_id}
+              where: { user_id : req.body.user_id}
             })
             .then(item => {
               if (item) {
@@ -153,7 +153,7 @@ exports.deleteUser = (req, res)=> {
       exports.getVisios = (req, res) => {
        UserVisio
         .findAll({
-          where: { userid : req.userid}
+          where: { user_id : req.body.id}
         })
         .then(item => {
           if (item) {
