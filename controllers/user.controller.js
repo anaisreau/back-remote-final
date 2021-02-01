@@ -1,3 +1,4 @@
+const authJwt = require('../middlewares/authjwt')
 const { role } = require('../models')
 const db = require ('../models')
 const user = db.user
@@ -98,10 +99,11 @@ exports.deleteUser = (req, res)=> {
 
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
+       user_id = authJwt.verifyToken
       Favorites
         .destroy({
           where: {
-            user_id : req.body.user_id,
+            user_id : user_id,
             contenu_id : req.params.contenu_id
           }
         })
