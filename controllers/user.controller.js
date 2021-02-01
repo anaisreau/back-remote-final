@@ -96,14 +96,18 @@ exports.deleteUser = (req, res)=> {
     const contenu_name = req.body.name
     const contenu_photo = req.body.photo
     const user_id = req.body.user_id
+    const contenu_description = req.body.description
+    const contenu_lien = req.body.lien
 
-    models
-      .FavoriteHorses
+
+    favorite
       .create({
         userid : user_id,
         contenuid: contenu_id,
         contenu_name : contenu_name,
         contenu_photo : contenu_photo,
+        contenu_description: contenu_description,
+        contenu_lien: contenu_lien
       })
       .then(res.status(200).send(`Le contenu a bien été ajouté aux favoris ! `))
 
@@ -112,11 +116,12 @@ exports.deleteUser = (req, res)=> {
 
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
-        favorite
+      favorite
         .destroy({
           where: {
             userid : req.userid,
-            contenuid : req.contenuid}
+            contenuid : req.contenuid
+          }
         })
         .then(res.status(200).send("Le contenu a bien été supprimé de vos favoris"))
         .catch((err) => res.status(500).json({ 'error': `Impossible de supprimer le contenu` }));
