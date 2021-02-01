@@ -131,7 +131,7 @@ exports.deleteUser = (req, res)=> {
           exports.getFavoris = (req, res) => {
             favorite
             .findAll({
-              where: { userid : userid}
+              where: { userid : req.body.user_id}
             })
             .then(item => {
               if (item) {
@@ -147,7 +147,7 @@ exports.deleteUser = (req, res)=> {
  exports.addVisio = (req, res) => {
   visio
   .create({
-    userid: req.userid,
+    userid: req.body.user_id,
     visioid: req.body.visioid,
   })
   .then(res.status(200).send(`la visio a bien été ajoutée`))
