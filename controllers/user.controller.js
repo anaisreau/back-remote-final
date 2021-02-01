@@ -10,8 +10,6 @@ const db = require ('../models')
 const user = db.user
 const favorite = db.favorite_contenu
 const visio= db.user_visio
-const contenu=db.Contenu
-var bcrypt = require("bcryptjs");
 
 
 exports.allAccess = (req, res) => {
