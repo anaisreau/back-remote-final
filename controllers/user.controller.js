@@ -100,12 +100,12 @@ exports.deleteUser = (req, res)=> {
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
      
-     
+     console.log(req.user_id)
     
       Favorites
         .destroy({
           where: {
-            user_id : req.user_id,
+            user_id : req.user.id,
             contenu_id : req.params.contenu_id
           }
         })
