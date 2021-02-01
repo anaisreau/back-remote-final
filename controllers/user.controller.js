@@ -8,7 +8,7 @@
 const { role } = require('../models')
 const db = require ('../models')
 const user = db.user
-const favorite = db.favorite_contenu
+const favorite = db.Favorite
 const visio= db.user_visio
 
 
