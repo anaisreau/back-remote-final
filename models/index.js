@@ -61,12 +61,12 @@ db.Visioconference.belongsToMany(db.user, {
   otherKey: "userId"
 });
 db.user.belongsToMany(db.Contenu, {
-  through: "user_contenu",
+  through: "Favorites",
   foreignKey: "userId",
   otherKey: "contenuId"
 });
 db.Contenu.belongsToMany(db.user, {
-  through: "user_contenu",
+  through: "Favorites",
   foreignKey: "contenuId",
   otherKey: "userId"
 });
