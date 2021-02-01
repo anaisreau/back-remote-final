@@ -19,7 +19,7 @@ verifyToken = (req, res, next) => {
       });
     }
     req.id = decoded.id;
-    return id
+    return id,
     next();
   });
 };
