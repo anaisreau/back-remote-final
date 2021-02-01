@@ -101,8 +101,8 @@ exports.deleteUser = (req, res)=> {
       Favorites
         .destroy({
           where: {
-            user_id : req.user_id,
-            contenu_id : req.contenu_id
+            user_id : req.body.user_id,
+            contenu_id : req.body.contenu_id
           }
         })
         .then(res.status(200).send("Le contenu a bien été supprimé de vos favoris"))
