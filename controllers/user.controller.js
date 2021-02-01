@@ -1,10 +1,9 @@
 const { role } = require('../models')
 const db = require ('../models')
-const Favorites = require('../models/Favorites')
 const UserVisio = require('../models/UserVisio')
 const user = db.user
-const favorite = db.Favorites
-const visio= db.user_visio
+const Favorites = db.favorite
+const visio= db.uservisio
 
 
 exports.allAccess = (req, res) => {
@@ -103,8 +102,8 @@ exports.deleteUser = (req, res)=> {
       Favorites
         .destroy({
           where: {
-            userid : req.userid,
-            contenuid : req.contenuid
+            user_id : req.user_id,
+            contenu_id : req.contenu_id
           }
         })
         .then(res.status(200).send("Le contenu a bien été supprimé de vos favoris"))
