@@ -1,10 +1,3 @@
-// const Visioconference = require("../models/Visioconference");
-// const User = require('../models/user.model');
-// const {Contenu} = require ('../models/Contenu');
-// const { user } = require("../models");
-// const {FavoriteContenu}= require('../models/favorite_contenu')
-// const {user_visio} = require ('../models/user_visios')
-
 const { role } = require('../models')
 const db = require ('../models')
 const Favorites = require('../models/Favorites')
@@ -90,25 +83,16 @@ exports.deleteUser = (req, res)=> {
   // add favorite contenu
      
   exports.addFavorite = (req, res) => {
-
-    //Params
-    const contenu_id = req.body.contenu_id
-    const contenu_name = req.body.name
-    const contenu_photo = req.body.photo
-    const user_id = req.body.user_id
-    const contenu_description = req.body.description
-    const contenu_lien = req.body.lien
-
-
-    Favorites
+      Favorites
       .create({
-        user_id : user_id,
-        contenu_id: contenu_id,
-        contenu_name : contenu_name,
-        contenu_photo : contenu_photo,
-        contenu_description: contenu_description,
-        contenu_lien: contenu_lien
+        user_id : req.body.user_id,
+        contenu_id: req.body.contenu_id,
+        contenu_name : req.body.name,
+        contenu_photo : req.body.photo,
+        contenu_description: req.body.description,
+        contenu_lien: req.body.lien
       })
+      .catch(error => console.log(error))
       .then(res.status(200).send(`Le contenu a bien été ajouté aux favoris ! `))
 
 };

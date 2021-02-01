@@ -44,31 +44,28 @@ db.Visioconference = require('../models/Visioconference')(sequelize, Sequelize);
 db.Type = require('../models/Type')(sequelize, Sequelize);
 db.Matiere = require('../models/Matiere')(sequelize, Sequelize);
 db.Niveau = require('../models/Niveau')(sequelize, Sequelize);
-
+db.Favorite = require ('../models/Favorites')(sequelize, Sequelize);
+db.Uservsio = require('../models/UserVisio')(sequelize, Sequelize);
 // associations
 
 db.role.hasMany(db.user)
 db.user.belongsTo(db.role)
 
-db.user.belongsToMany(db.Visioconference, {
-  through: "Uservisio",
-  foreignKey: "userId",
-  otherKey: "visioId"
+db.user.hasMany(db.Uservsio, {
+  as: "Uservisio",
+  foreignKey: "user_id",
 });
-db.Visioconference.belongsToMany(db.user, {
-  through: "Uservisio",
-  foreignKey: "visioId",
-  otherKey: "userId"
+db.Visioconference.hasMany(db.Uservsio, {
+  as: "Uservisio",
+  foreignKey: "visio_id",
 });
-db.user.belongsToMany(db.Contenu, {
-  through: "Favorites",
-  foreignKey: "userId",
-  otherKey: "contenuId"
+db.user.hasMany(db.Favorite, {
+  as: "Favorites",
+  foreignKey: "user_id",
 });
-db.Contenu.belongsToMany(db.user, {
-  through: "Favorites",
-  foreignKey: "contenuId",
-  otherKey: "userId"
+db.Contenu.hasMany(db.Favorite, {
+  as: "Favorites",
+  foreignKey: "contenu_id",
 });
 db.Niveau.hasMany(db.Visioconference)
 db.Matiere.hasMany(db.Visioconference)
