@@ -98,7 +98,7 @@ exports.deleteUser = (req, res)=> {
     const contenu_lien = req.body.lien
 
 
-    favorite
+    db.Favorites
       .create({
         userid : user_id,
         contenuid: contenu_id,
