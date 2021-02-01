@@ -51,12 +51,12 @@ db.role.hasMany(db.user)
 db.user.belongsTo(db.role)
 
 db.user.belongsToMany(db.Visioconference, {
-  through: "user_visioconferences",
+  through: "Uservisio",
   foreignKey: "userId",
   otherKey: "visioId"
 });
 db.Visioconference.belongsToMany(db.user, {
-  through: "user_visioconferences",
+  through: "Uservisio",
   foreignKey: "visioId",
   otherKey: "userId"
 });

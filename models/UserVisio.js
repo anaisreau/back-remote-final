@@ -1,10 +1,10 @@
 'use strict';
-const models =require('../models')
+const models =require('.')
 
 
 module.exports = (sequelize, DataTypes) => {
 
-    const user_visio = sequelize.define('user_visio', { 
+    const Uservisio = sequelize.define('Uservisio', { 
         user_visio_id : {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -25,5 +25,5 @@ module.exports = (sequelize, DataTypes) => {
      });
     
 
-    return user_visio;
+    return Uservisio;
 }

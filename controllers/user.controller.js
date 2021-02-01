@@ -7,6 +7,8 @@
 
 const { role } = require('../models')
 const db = require ('../models')
+const Favorites = require('../models/Favorites')
+const UserVisio = require('../models/UserVisio')
 const user = db.user
 const favorite = db.Favorites
 const visio= db.user_visio
@@ -98,7 +100,7 @@ exports.deleteUser = (req, res)=> {
     const contenu_lien = req.body.lien
 
 
-    db.Favorites
+    Favorites
       .create({
         userid : user_id,
         contenuid: contenu_id,
@@ -114,7 +116,7 @@ exports.deleteUser = (req, res)=> {
 
 // delete favorite contenu
      exports.deleteFavoris = (req, res) => {
-      favorite
+      Favorites
         .destroy({
           where: {
             userid : req.userid,
@@ -127,7 +129,7 @@ exports.deleteUser = (req, res)=> {
 
 // display all favoris 
           exports.getFavoris = (req, res) => {
-            favorite
+            Favorites
             .findAll({
               where: { userid : req.body.user_id}
             })
@@ -143,7 +145,7 @@ exports.deleteUser = (req, res)=> {
 
  // add visio
  exports.addVisio = (req, res) => {
-  visio
+  UserVisio
   .create({
     userid: req.body.user_id,
     visioid: req.body.visioid,
@@ -153,7 +155,7 @@ exports.deleteUser = (req, res)=> {
 
 // delete visio
  exports.deleteVisio = (req, res) => {
-    visio
+    UserVisio
       .destroy({
         where: {
           userid : req.userid,
@@ -166,7 +168,7 @@ exports.deleteUser = (req, res)=> {
 
 // display all visio
       exports.getVisios = (req, res) => {
-       visio
+       UserVisio
         .findAll({
           where: { userid : req.userid}
         })
