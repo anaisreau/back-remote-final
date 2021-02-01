@@ -22,16 +22,21 @@ module.exports = (sequelize, DataTypes) => {
 
         contenu_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         contenu_description: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+
+        },
+        contenu_photo: {
+            type: DataTypes.STRING,
+            allowNull: true,
 
         },
         contenu_lien: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
     },
         {

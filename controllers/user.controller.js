@@ -92,7 +92,7 @@ exports.deleteUser = (req, res)=> {
   exports.addFavorite = (req, res) => {
 
     //Params
-    const contenu_id = Number(req.body.contenu_id)
+    const contenu_id = req.body.contenu_id
     const contenu_name = req.body.name
     const contenu_photo = req.body.photo
     const user_id = req.body.user_id
