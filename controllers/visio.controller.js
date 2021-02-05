@@ -17,7 +17,7 @@ exports.allVisio = ()=> {
 exports.idVisio = ()=> {
     Visio
     .findAll({
-      where: { id : req.params.id },
+      where: { visio_id : req.params.id },
       include: [{
         model : models.User, 
         attributes : [ 'email', 'phone', 'avatar', 'firstname', 'lastname']
@@ -34,6 +34,8 @@ exports.createVisio = (req, res)=> {
         description : req.body.description,
         name :req.body.name,
         lien :req.body.lien,
+        date : req.body.date,
+        
      })
     .then(x => res.json(x))
     }
