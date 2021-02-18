@@ -44,23 +44,12 @@ app.use('/api/niveaux', NiveauRouter)
 app.use('/api/visios', VisioRouter)
 
 
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user"
-  });
- 
-  Role.create({
-    id: 2,
-    name: "moderator"
-  });
 
-}
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 
   models
-  .sequelize.sync({force : true }).then(() => {
+  .sequelize.sync().then(() => {
     console.log('Drop and Resync Db');
     initial();
   });
