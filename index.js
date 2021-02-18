@@ -15,18 +15,12 @@ const Role = models.role;
 
 
 var corsOptions = {
-  origin: ["https://dazzling-bohr-7dd504.netlify.app", "http://localhost:3000"]
+  origin: "https://dazzling-bohr-7dd504.netlify.app", "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
 
-app.use(function(req, res, next) {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
-  next();
-});
+
 
 
 // parse requests of content-type - application/json
@@ -66,7 +60,7 @@ function initial() {
 const PORT = process.env.PORT || 8080;
 
   models
-  .sequelize.sync().then(() => {
+  .sequelize.sync({force : true }).then(() => {
     console.log('Drop and Resync Db');
     initial();
   });
