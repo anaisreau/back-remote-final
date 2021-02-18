@@ -15,7 +15,7 @@ const Role = models.role;
 
 
 var corsOptions = {
-  origin: "https://dazzling-bohr-7dd504.netlify.app", "http://localhost:3000"
+  origin: "https://dazzling-bohr-7dd504.netlify.app"
 };
 
 app.use(cors(corsOptions));
